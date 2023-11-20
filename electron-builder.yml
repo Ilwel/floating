@@ -1,0 +1,16 @@
+appId: com.gci.floating
+productName: Floating
+copyright: Copyright © 2023 GCI Risk
+target: NSIS
+nsis:
+  allowToChangeInstallationDirectory: true
+  oneClick: false
+directories:
+  output: dist
+  buildResources: resources
+files:
+  - from: .
+    filter:
+      - package.json
+      - app
+publish: null
