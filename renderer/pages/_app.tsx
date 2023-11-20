@@ -18,7 +18,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             Floating
           </p>
         </div>      
-        <main className='flex h-[84%] items-center justify-center'>
+        <main className='flex h-[84%] items-start justify-center'>
           <Component {...pageProps} />
         </main>  
 

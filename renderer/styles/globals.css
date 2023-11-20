@@ -8,6 +8,15 @@
     -webkit-user-select: none;
     -webkit-app-region: drag;
   }
+  input{
+    all: unset;
+    @apply bg-text p-3 rounded-sm placeholder:text-highlight/75 text-highlight
+  }
+  button{
+    all: unset;
+    @apply border border-solid border-text p-2 cursor-pointer w-fit
+      hover:bg-text hover:text-highlight duration-500
+  }
 }
 
 @layer components {
