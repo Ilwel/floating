@@ -11,14 +11,14 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <title>Floating</title>
       </Head>
-      <div className='box-border text-text bg-base h-screen'>
+      <div className='box-border text-text bg-base h-screen relative'>
         <div className='header min-h-[50px] max-h-[50px] p-3 select-none flex gap-2'>
           <Image src={logo} alt='gci logo' height={20} width={20}/>
           <p >
             Floating
           </p>
         </div>      
-        <main className='flex h-[84%] items-start justify-center'>
+        <main className='flex h-[84%] w-full items-start justify-center relative'>
           <Component {...pageProps} />
         </main>  
 
