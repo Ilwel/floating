@@ -1,13 +1,17 @@
 import { FormEvent, useState } from "react"
 import { ApiService } from "../../services/ApiService"
+import { useRouter } from "next/router"
 
 export default function SignIn(){
 
   const [token, setToken] = useState('')
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const { push } = useRouter()
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    ApiService.getUser(token)
+    await ApiService.getUser(token)
+    push('/')
   }
 
   return (

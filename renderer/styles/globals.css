@@ -14,8 +14,14 @@
   }
   button{
     all: unset;
-    @apply border border-solid border-text p-2 cursor-pointer w-fit
+    @apply border border-solid rounded-sm border-text p-2 cursor-pointer w-fit
       hover:bg-text hover:text-highlight duration-500
+  }
+  button.error{
+    @apply hover:bg-red-800
+  }
+  .field{
+    @apply flex flex-col gap-1 select-none
   }
 }
 
