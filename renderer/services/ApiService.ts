@@ -8,7 +8,7 @@ export class ApiService{
       headers: { authorization: (token as string) }
     }
 
-    const res = await fetch(`/api/user`, options)
+    const res = await fetch(`${this.api}/api/users/usuario_logado`, options)
 
     if(res.ok){
       const data = await res.json()

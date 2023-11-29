@@ -19,6 +19,7 @@ if (isProd) {
     height: 400,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
+      webSecurity: false
     },
     frame: false,
     titleBarStyle: 'hidden',
@@ -28,7 +29,7 @@ if (isProd) {
       height: 50
     },
     maximizable: false,
-    resizable: false
+    resizable: false,
   })
 
   if (isProd) {
