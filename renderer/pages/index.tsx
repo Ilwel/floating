@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import Loading from '../components/general/loading'
 import { BadgeCheck, LogOut } from 'lucide-react'
-import Notification, { NotificationType } from '../components/main/notification'
+import Status, { StatusType } from '../components/main/status'
 
 const mock = [
   'AG INICIO',
@@ -33,7 +33,7 @@ export interface UserInterface{
 
 interface Vehicle {
   plate: string
-  status: NotificationType
+  status: StatusType
 }
 
 export default function HomePage() {
@@ -100,7 +100,7 @@ export default function HomePage() {
       { vehicle ? (
         <div className='flex items-center gap-2'>
           <p className='font-bold border border-solid p-2 border-text select-none'>{vehicle.plate}</p>
-          <Notification type={vehicle.status}/>
+          <Status type={vehicle.status}/>
           <button onClick={() => setVehicle(null)}>Editar</button>
         </div>
       ) : (
@@ -115,7 +115,7 @@ export default function HomePage() {
           <div className='flex gap-2 p-1 flex-wrap overflow-y-scroll min-w-[100%] max-h-[100px]'>
 
             {mock2.map(item => (
-              <Notification type={item as NotificationType}/>
+              <Status type={item as StatusType}/>
             ))}
           </div>
         </div>
