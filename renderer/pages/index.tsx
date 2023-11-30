@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Loading from '../components/general/loading'
 import { BadgeCheck, LogOut } from 'lucide-react'
 import Status, { StatusType } from '../components/main/status'
+import VehicleEvent, { VehicleEventType } from '../components/main/vehicle_event'
 
 const mock = [
   'AG INICIO',
@@ -22,7 +23,16 @@ const mock = [
   'PARADA ABASTECIMENTO'
 ]
 
-const mock2 = []
+const mock2 = [
+  'VIOLAÇÃO DE DESENGATE', 
+  'VIOLAÇÃO DE BAÚ', 
+  'VIOLAÇÃO DE PAINEL',
+  'VIOLAÇÃO DE ANTENA',
+  'PERDA DE SINAL',
+  'VIOLAÇÃO DE COMPUTADOR DE BORDO',
+  'BOTÃO DE PÂNICO',
+  'VIOLAÇÃO DE PORTAS'
+]
 
 export interface UserInterface{
   user_signed_in: boolean,
@@ -48,7 +58,7 @@ export default function HomePage() {
   const searchPlate = () => {
     return {
       plate: 'AAA1234',
-      status: 'PERNOITE'
+      status: 'EM VIAGEM'
     } as Vehicle
   } 
 
@@ -111,11 +121,11 @@ export default function HomePage() {
       )}
       {vehicle && (
         <div className='flex gap-1 p-1 mt-3 flex-wrap w-[62%] h-[100px]' >
-          <h2 className='select-none'>Histórico de Eventos</h2>
-          <div className='flex gap-2 p-1 flex-wrap overflow-y-scroll min-w-[100%] max-h-[100px]'>
+          <h2 className='select-none'>Eventos</h2>
+          <div className='flex gap-2 p-1 flex-wrap overflow-y-auto min-w-[100%] max-h-[100px]'>
 
             {mock2.map(item => (
-              <Status type={item as StatusType}/>
+              <VehicleEvent type={item as VehicleEventType}/>
             ))}
           </div>
         </div>
