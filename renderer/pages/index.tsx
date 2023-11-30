@@ -21,6 +21,9 @@ const mock = [
   'PARADA MANUNTENÇÃO',
   'PARADA ABASTECIMENTO'
 ]
+
+const mock2 = []
+
 export interface UserInterface{
   user_signed_in: boolean,
   current_user: string,
@@ -28,11 +31,35 @@ export interface UserInterface{
   grupo_usuario_id: number
 }
 
+interface Vehicle {
+  plate: string
+  status: NotificationType
+}
+
 export default function HomePage() {
 
   const { push, reload } = useRouter()
   const [loading, setLoading] = useState(false)
   const [user, setUser] = useState<UserInterface>()
+  const [plate, setPlate] = useState('')
+  const [vehicle, setVehicle] = useState<Vehicle>()
+
+
+  const searchPlate = () => {
+    return {
+      plate: 'AAA1234',
+      status: 'PERNOITE'
+    } as Vehicle
+  } 
+
+  useEffect(() => {
+    if(plate.length === 7){
+      setLoading(true)
+      const data = searchPlate()
+      setVehicle(data)
+      setLoading(false)
+    }
+  }, [plate])
 
   useEffect(() => {
 
@@ -70,24 +97,29 @@ export default function HomePage() {
           <LogOut className='w-5'/>
         </button>
       </div>
-      <div className="field">
-        <label htmlFor="plate" >Placa</label>
-        <div className='flex gap-2'>
-          <input className='uppercase placeholder:normal-case' type="text" name='plate' placeholder='Insira a Placa'/>
-          <Notification type='EM VIAGEM'/>
+      { vehicle ? (
+        <div className='flex items-center gap-2'>
+          <p className='font-bold border border-solid p-2 border-text select-none'>{vehicle.plate}</p>
+          <Notification type={vehicle.status}/>
+          <button onClick={() => setVehicle(null)}>Editar</button>
         </div>
-      </div>
-
-
-      <div className='flex gap-1 p-1 mt-3 flex-wrap w-[62%] h-[100px]' >
-        <h2 className='select-none'>Histórico de Eventos</h2>
-        <div className='flex gap-2 p-1 flex-wrap overflow-y-scroll max-h-[100px]'>
-
-          {mock.map(item => (
-            <Notification type={item as NotificationType}/>
-          ))}
+      ) : (
+        <div className="field">
+          <label htmlFor="plate" >Placa</label>
+          <input onChange={e => setPlate(e.target.value)} className='uppercase placeholder:normal-case' type="text" name='plate' placeholder='Insira a Placa'/>
         </div>
-      </div>
+      )}
+      {vehicle && (
+        <div className='flex gap-1 p-1 mt-3 flex-wrap w-[62%] h-[100px]' >
+          <h2 className='select-none'>Histórico de Eventos</h2>
+          <div className='flex gap-2 p-1 flex-wrap overflow-y-scroll min-w-[100%] max-h-[100px]'>
+
+            {mock2.map(item => (
+              <Notification type={item as NotificationType}/>
+            ))}
+          </div>
+        </div>
+      )}
 
     </div>
   )
