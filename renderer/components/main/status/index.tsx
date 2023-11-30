@@ -107,7 +107,7 @@ const FuelStopLabel = () => (
 
 
 export type StatusType = 
-'AG INICIO' 
+'AGUARDANDO INICIO' 
 | 'EM VIAGEM' 
 | 'CLIENTE'
 | 'FILIAL'
@@ -130,7 +130,7 @@ interface StatusInterface{
 export default function Status({ type }: StatusInterface){
 
   const mapStatuss = {
-    'AG INICIO': <StartLabel/>,
+    'AGUARDANDO INICIO': <StartLabel/>,
     'EM VIAGEM': <OnTripLabel/>, 
     'CLIENTE': <ClientLabel/>,
     'FILIAL': <BranchLabel/>,

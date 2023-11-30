@@ -4,6 +4,7 @@ import Loading from '../components/general/loading'
 import { BadgeCheck, LogOut } from 'lucide-react'
 import Status, { StatusType } from '../components/main/status'
 import VehicleEvent, { VehicleEventType } from '../components/main/vehicle_event'
+import Autocomplete from '../components/general/autocomplete'
 
 const mock = [
   'AG INICIO',
@@ -31,7 +32,8 @@ const mock2 = [
   'PERDA DE SINAL',
   'VIOLAÇÃO DE COMPUTADOR DE BORDO',
   'BOTÃO DE PÂNICO',
-  'VIOLAÇÃO DE PORTAS'
+  'VIOLAÇÃO DE PORTAS',
+  'DESVIO DE ROTA'
 ]
 
 export interface UserInterface{
@@ -41,7 +43,7 @@ export interface UserInterface{
   grupo_usuario_id: number
 }
 
-interface Vehicle {
+export interface Vehicle {
   plate: string
   status: StatusType
 }
@@ -53,6 +55,7 @@ export default function HomePage() {
   const [user, setUser] = useState<UserInterface>()
   const [plate, setPlate] = useState('')
   const [vehicle, setVehicle] = useState<Vehicle>()
+  const [openStatusInput, setOpenStatusInput] = useState(false)
 
 
   const searchPlate = () => {
@@ -95,7 +98,7 @@ export default function HomePage() {
 
 
   return (
-    <div className='w-full flex flex-col items-center'>
+    <div className='w-full flex flex-col items-center overflow-hidden h-full'>
       <Loading open={loading}/>
       <div className="flex w-full p-3 items-center justify-between select-none">
         <div className='flex gap-2 items-center'>
@@ -110,8 +113,10 @@ export default function HomePage() {
       { vehicle ? (
         <div className='flex items-center gap-2'>
           <p className='font-bold border border-solid p-2 border-text select-none'>{vehicle.plate}</p>
-          <Status type={vehicle.status}/>
-          <button onClick={() => setVehicle(null)}>Editar</button>
+          <div onClick={() => setOpenStatusInput(true)}>
+            <Status type={vehicle.status}/>
+          </div>
+          <button onClick={() => setVehicle(null)}>Editar Placa</button>
         </div>
       ) : (
         <div className="field">
@@ -119,10 +124,16 @@ export default function HomePage() {
           <input onChange={e => setPlate(e.target.value)} className='uppercase placeholder:normal-case' type="text" name='plate' placeholder='Insira a Placa'/>
         </div>
       )}
+
+      {openStatusInput && (
+        <Autocomplete setOpen={setOpenStatusInput} vehicle={vehicle} setVehicle={setVehicle} className='mt-3'/>
+      )}
+
+
       {vehicle && (
         <div className='flex gap-1 p-1 mt-3 flex-wrap w-[62%] h-[100px]' >
           <h2 className='select-none'>Eventos</h2>
-          <div className='flex gap-2 p-1 flex-wrap overflow-y-auto min-w-[100%] max-h-[100px]'>
+          <div className='flex gap-2 p-1 flex-wrap overflow-y-auto min-w-[100%] max-h-[100px] no-scrollbar'>
 
             {mock2.map(item => (
               <VehicleEvent type={item as VehicleEventType}/>

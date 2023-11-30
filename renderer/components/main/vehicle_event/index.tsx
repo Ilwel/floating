@@ -1,4 +1,4 @@
-import { Antenna, MonitorOff, PanelTopInactive, Siren, Truck, Unlock, Unplug, WifiOff } from "lucide-react"
+import { Antenna, MonitorOff, PanelTopInactive, Siren, Split, Truck, Unlock, Unplug, WifiOff } from "lucide-react"
 
 export type VehicleEventType = 
 'VIOLAÇÃO DE DESENGATE'
@@ -9,6 +9,7 @@ export type VehicleEventType =
 | 'VIOLAÇÃO DE COMPUTADOR DE BORDO'
 | 'BOTÃO DE PÂNICO'
 | 'VIOLAÇÃO DE PORTAS'
+| 'DESVIO DE ROTA'
 
 interface VehicleEventInterface{
   type: VehicleEventType
@@ -52,7 +53,7 @@ const LostSignalLabel = () => (
 const MonitorLabel = () => (
   <div className="label group error">
     <MonitorOff/>
-    <p className="absolute bottom-2 left-4 opacity-0 group-hover:opacity-100 duration-500">PERDA DE SINAL</p>
+    <p className="absolute bottom-2 left-4 opacity-0 group-hover:opacity-100 duration-500">VIOLAÇÃO DE COMPUTADOR DE BORDO</p>
   </div>
 )
 
@@ -69,6 +70,13 @@ const DoorLabel = () => (
     <p className="absolute bottom-2 left-4 opacity-0 group-hover:opacity-100 duration-500">VIOLAÇÃO DE PORTAS</p>
   </div>
 )
+
+const SplitLabel = () => (
+  <div className="label group error">
+    <Split/>
+    <p className="absolute bottom-2 left-4 opacity-0 group-hover:opacity-100 duration-500">DESVIO DE ROTA</p>
+  </div>
+)
  
 export default function VehicleEvent({ type }: VehicleEventInterface){
 
@@ -80,7 +88,8 @@ export default function VehicleEvent({ type }: VehicleEventInterface){
     'PERDA DE SINAL': <LostSignalLabel/>,
     'VIOLAÇÃO DE COMPUTADOR DE BORDO': <MonitorLabel/>,
     'BOTÃO DE PÂNICO': <PanicLabel/>,
-    'VIOLAÇÃO DE PORTAS': <DoorLabel/>
+    'VIOLAÇÃO DE PORTAS': <DoorLabel/>,
+    'DESVIO DE ROTA': <SplitLabel/>
   }
 
   return mapEvents[type]
