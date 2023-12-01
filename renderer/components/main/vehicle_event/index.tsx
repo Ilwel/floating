@@ -18,63 +18,63 @@ interface VehicleEventInterface{
 const UnplugLabel = () => (
   <div className="label group error">
     <Unplug/>
-    <p className="absolute bottom-2 left-4 opacity-0 group-hover:opacity-100 duration-500">VIOLAÇÃO DE DESENGATE</p>
+    <p className="absolute duration-500 opacity-0 bottom-2 left-4 group-hover:opacity-100">VIOLAÇÃO DE DESENGATE</p>
   </div>
 )
 
 const PanelLabel = () => (
   <div className="label group error">
     <PanelTopInactive/>
-    <p className="absolute bottom-2 left-4 opacity-0 group-hover:opacity-100 duration-500">VIOLAÇÃO DE PAINEL</p>
+    <p className="absolute duration-500 opacity-0 bottom-2 left-4 group-hover:opacity-100">VIOLAÇÃO DE PAINEL</p>
   </div>
 )
 
 const TruckLabel = () => (
   <div className="label group error">
     <Truck/>
-    <p className="absolute bottom-2 left-4 opacity-0 group-hover:opacity-100 duration-500">VIOLAÇÃO DE BAÚ</p>
+    <p className="absolute duration-500 opacity-0 bottom-2 left-4 group-hover:opacity-100">VIOLAÇÃO DE BAÚ</p>
   </div>
 )
 
 const AntennaLabel = () => (
   <div className="label group error">
     <Antenna/>
-    <p className="absolute bottom-2 left-4 opacity-0 group-hover:opacity-100 duration-500">VIOLAÇÃO DE ANTENA</p>
+    <p className="absolute duration-500 opacity-0 bottom-2 left-4 group-hover:opacity-100">VIOLAÇÃO DE ANTENA</p>
   </div>
 )
 
 const LostSignalLabel = () => (
   <div className="label group error">
     <WifiOff/>
-    <p className="absolute bottom-2 left-4 opacity-0 group-hover:opacity-100 duration-500">PERDA DE SINAL</p>
+    <p className="absolute duration-500 opacity-0 bottom-2 left-4 group-hover:opacity-100">PERDA DE SINAL</p>
   </div>
 )
 
 const MonitorLabel = () => (
   <div className="label group error">
     <MonitorOff/>
-    <p className="absolute bottom-2 left-4 opacity-0 group-hover:opacity-100 duration-500">VIOLAÇÃO DE COMPUTADOR DE BORDO</p>
+    <p className="absolute duration-500 opacity-0 bottom-2 left-4 group-hover:opacity-100">VIOLAÇÃO DE COMPUTADOR DE BORDO</p>
   </div>
 )
 
 const PanicLabel = () => (
   <div className="label group error">
     <Siren/>
-    <p className="absolute bottom-2 left-4 opacity-0 group-hover:opacity-100 duration-500">BOTÃO DE PÂNICO</p>
+    <p className="absolute duration-500 opacity-0 bottom-2 left-4 group-hover:opacity-100">BOTÃO DE PÂNICO</p>
   </div>
 )
 
 const DoorLabel = () => (
   <div className="label group error">
     <Unlock/>
-    <p className="absolute bottom-2 left-4 opacity-0 group-hover:opacity-100 duration-500">VIOLAÇÃO DE PORTAS</p>
+    <p className="absolute duration-500 opacity-0 bottom-2 left-4 group-hover:opacity-100">VIOLAÇÃO DE PORTAS</p>
   </div>
 )
 
 const SplitLabel = () => (
   <div className="label group error">
     <Split/>
-    <p className="absolute bottom-2 left-4 opacity-0 group-hover:opacity-100 duration-500">DESVIO DE ROTA</p>
+    <p className="absolute duration-500 opacity-0 bottom-2 left-4 group-hover:opacity-100">DESVIO DE ROTA</p>
   </div>
 )
  

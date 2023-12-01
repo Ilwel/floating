@@ -3,105 +3,105 @@ import { BadgeCheck, CloudOff, Construction, Droplet, FlagTriangleRight, Fuel, G
 const StartLabel = () => (
   <div className="label check group">
     <BadgeCheck/>
-    <p className="absolute bottom-2 left-4 opacity-0 group-hover:opacity-100 duration-500">AGUARDANDO INÍCIO</p>
+    <p className="absolute duration-500 opacity-0 bottom-2 left-4 group-hover:opacity-100">AGUARDANDO INÍCIO</p>
   </div>
 )
 
 const OnTripLabel = () => (
   <div className="label check group">
     <Truck/>
-    <p className="absolute bottom-2 left-4 opacity-0 group-hover:opacity-100 duration-500">EM VIAGEM</p>
+    <p className="absolute duration-500 opacity-0 bottom-2 left-4 group-hover:opacity-100">EM VIAGEM</p>
   </div>
 )
 
 const ClientLabel = () => (
   <div className="label check group">
     <PackageCheck/>
-    <p className="absolute bottom-2 left-4 opacity-0 group-hover:opacity-100 duration-500">CLIENTE</p>
+    <p className="absolute duration-500 opacity-0 bottom-2 left-4 group-hover:opacity-100">CLIENTE</p>
   </div>
 )
 
 const BranchLabel = () => (
   <div className="label check group">
     <FlagTriangleRight/>
-    <p className="absolute bottom-2 left-4 opacity-0 group-hover:opacity-100 duration-500">FILIAL</p>
+    <p className="absolute duration-500 opacity-0 bottom-2 left-4 group-hover:opacity-100">FILIAL</p>
   </div>
 )
 
 const MissingSignalLabel = () => (
   <div className="label error group">
     <CloudOff/>
-    <p className="absolute bottom-2 left-4 opacity-0 group-hover:opacity-100 duration-500">SINAL NÃO DIRECIONADO</p>
+    <p className="absolute duration-500 opacity-0 bottom-2 left-4 group-hover:opacity-100">SINAL NÃO DIRECIONADO</p>
   </div>
 )
 
 const OnNightLabel = () => (
   <div className="label purple group">
     <Moon/>
-    <p className="absolute bottom-2 left-4 opacity-0 group-hover:opacity-100 duration-500">PERNOITE</p>
+    <p className="absolute duration-500 opacity-0 bottom-2 left-4 group-hover:opacity-100">PERNOITE</p>
   </div>
 )
 
 const WrongStopLabel = () => (
   <div className="label error group">
     <ShieldX />
-    <p className="absolute bottom-2 left-4 opacity-0 group-hover:opacity-100 duration-500">PARADA INDEVIDA</p>
+    <p className="absolute duration-500 opacity-0 bottom-2 left-4 group-hover:opacity-100">PARADA INDEVIDA</p>
   </div>
 )
 
 const EventualStopLabel = () => (
   <div className="label check group">
     <GitCommitHorizontal/>
-    <p className="absolute bottom-2 left-4 opacity-0 group-hover:opacity-100 duration-500">PARADA EVENTUAL</p>
+    <p className="absolute duration-500 opacity-0 bottom-2 left-4 group-hover:opacity-100">PARADA EVENTUAL</p>
   </div>
 )
 
 const FiscalStopLabel = () => (
   <div className="label check group">
     <Milestone/>
-    <p className="absolute bottom-2 left-4 opacity-0 group-hover:opacity-100 duration-500">PARADA POSTO FISCAL</p>
+    <p className="absolute duration-500 opacity-0 bottom-2 left-4 group-hover:opacity-100">PARADA POSTO FISCAL</p>
   </div>
 )
 
 const HygieneStopLabel = () => (
   <div className="label check group">
     <Droplet/>
-    <p className="absolute bottom-2 left-4 opacity-0 group-hover:opacity-100 duration-500">PARADA HIGIENE</p>
+    <p className="absolute duration-500 opacity-0 bottom-2 left-4 group-hover:opacity-100">PARADA HIGIENE</p>
   </div>
 )
 
 const DistributionStopLabel = () => (
   <div className="label check group">
     <Package/>
-    <p className="absolute bottom-2 left-4 opacity-0 group-hover:opacity-100 duration-500">PARADA DISTRIBUIÇÃO</p>
+    <p className="absolute duration-500 opacity-0 bottom-2 left-4 group-hover:opacity-100">PARADA DISTRIBUIÇÃO</p>
   </div>
 )
 
 const SnackStopLabel = () => (
   <div className="label check group">
     <Utensils/>
-    <p className="absolute bottom-2 left-4 opacity-0 group-hover:opacity-100 duration-500">PARADA REFEIÇÃO</p>
+    <p className="absolute duration-500 opacity-0 bottom-2 left-4 group-hover:opacity-100">PARADA REFEIÇÃO</p>
   </div>
 )
 
 const ClosedRoadStopLabel = () => (
   <div className="label check group">
     <Construction/>
-    <p className="absolute bottom-2 left-4 opacity-0 group-hover:opacity-100 duration-500">PARADA VIA INTERDITADA</p>
+    <p className="absolute duration-500 opacity-0 bottom-2 left-4 group-hover:opacity-100">PARADA VIA INTERDITADA</p>
   </div>
 )
 
 const MaintenanceStopLabel = () => (
   <div className="label error group">
     <Wrench/>
-    <p className="absolute bottom-2 left-4 opacity-0 group-hover:opacity-100 duration-500">PARADA MANUTENÇÃO</p>
+    <p className="absolute duration-500 opacity-0 bottom-2 left-4 group-hover:opacity-100">PARADA MANUTENÇÃO</p>
   </div>
 )
 
 const FuelStopLabel = () => (
   <div className="label check group">
     <Fuel/>
-    <p className="absolute bottom-2 left-4 opacity-0 group-hover:opacity-100 duration-500">PARADA ABASTECIMENTO</p>
+    <p className="absolute duration-500 opacity-0 bottom-2 left-4 group-hover:opacity-100">PARADA ABASTECIMENTO</p>
   </div>
 )
 

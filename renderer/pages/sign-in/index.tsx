@@ -15,7 +15,7 @@ export default function SignIn(){
   }
 
   return (
-    <div className="flex gap-3 flex-col items-center mt-20">
+    <div className="flex flex-col items-center gap-3 mt-20">
       <h1 className="text-xl select-none">Token</h1>
       <form className="flex gap-2" onSubmit={e => handleSubmit(e)} id="form" action="">
         <input onChange={e => setToken(e.target.value)} name="token" type="text" placeholder="Insira seu token"/>

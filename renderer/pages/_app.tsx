@@ -11,7 +11,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <title>Floating</title>
       </Head>
-      <div className='box-border text-text bg-base h-screen relative'>
+      <div className='box-border relative h-screen text-text bg-base'>
         <div className='header min-h-[50px] max-h-[50px] p-3 select-none flex gap-2'>
           <Image src={logo} alt='gci logo' height={20} width={20}/>
           <p>

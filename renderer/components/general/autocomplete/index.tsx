@@ -4,105 +4,105 @@ import { StatusType } from "../../main/status"
 import { Vehicle } from "../../../pages"
 
 const StartLabel = () => (
-  <div className="label check w-full snap-center">
+  <div className="w-full label check snap-center">
     <BadgeCheck/>
     <p>AGUARDANDO INÍCIO</p>
   </div>
 )
 
 const OnTripLabel = () => (
-  <div className="label check w-full snap-center">
+  <div className="w-full label check snap-center">
     <Truck/>
     <p>EM VIAGEM</p>
   </div>
 )
 
 const ClientLabel = () => (
-  <div className="label check w-full snap-center">
+  <div className="w-full label check snap-center">
     <PackageCheck/>
     <p>CLIENTE</p>
   </div>
 )
 
 const BranchLabel = () => (
-  <div className="label check w-full snap-center">
+  <div className="w-full label check snap-center">
     <FlagTriangleRight/>
     <p>FILIAL</p>
   </div>
 )
 
 const MissingSignalLabel = () => (
-  <div className="label error w-full">
+  <div className="w-full label error">
     <CloudOff/>
     <p>SINAL NÃO DIRECIONADO</p>
   </div>
 )
 
 const OnNightLabel = () => (
-  <div className="label purple w-full">
+  <div className="w-full label purple">
     <Moon/>
     <p>PERNOITE</p>
   </div>
 )
 
 const WrongStopLabel = () => (
-  <div className="label error w-full">
+  <div className="w-full label error">
     <ShieldX />
     <p>PARADA INDEVIDA</p>
   </div>
 )
 
 const EventualStopLabel = () => (
-  <div className="label check w-full snap-center">
+  <div className="w-full label check snap-center">
     <GitCommitHorizontal/>
     <p>PARADA EVENTUAL</p>
   </div>
 )
 
 const FiscalStopLabel = () => (
-  <div className="label check w-full snap-center">
+  <div className="w-full label check snap-center">
     <Milestone/>
     <p>PARADA POSTO FISCAL</p>
   </div>
 )
 
 const HygieneStopLabel = () => (
-  <div className="label check w-full snap-center">
+  <div className="w-full label check snap-center">
     <Droplet/>
     <p>PARADA HIGIENE</p>
   </div>
 )
 
 const DistributionStopLabel = () => (
-  <div className="label check w-full snap-center">
+  <div className="w-full label check snap-center">
     <Package/>
     <p>PARADA DISTRIBUIÇÃO</p>
   </div>
 )
 
 const SnackStopLabel = () => (
-  <div className="label check w-full snap-center">
+  <div className="w-full label check snap-center">
     <Utensils/>
     <p>PARADA REFEIÇÃO</p>
   </div>
 )
 
 const ClosedRoadStopLabel = () => (
-  <div className="label check w-full snap-center">
+  <div className="w-full label check snap-center">
     <Construction/>
     <p>PARADA VIA INTERDITADA</p>
   </div>
 )
 
 const MaintenanceStopLabel = () => (
-  <div className="label error w-full">
+  <div className="w-full label error">
     <Wrench/>
     <p>PARADA MANUTENÇÃO</p>
   </div>
 )
 
 const FuelStopLabel = () => (
-  <div className="label check w-full snap-center">
+  <div className="w-full label check snap-center">
     <Fuel/>
     <p>PARADA ABASTECIMENTO</p>
   </div>

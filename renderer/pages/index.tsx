@@ -100,28 +100,28 @@ export default function HomePage() {
 
 
   return (
-    <div className='w-full flex flex-col items-center overflow-hidden h-full'>
+    <div className='flex flex-col items-center w-full h-full overflow-hidden'>
       <Loading open={loading}/>
-      <div className="flex w-full p-3 items-center justify-between select-none">
-        <div className='flex gap-2 items-center'>
+      <div className="flex items-center justify-between w-full p-3 select-none">
+        <div className='flex items-center gap-2'>
           <BadgeCheck/>
-          <p className='font-bold text-sm'>Nova Sessão: {user?.current_user}</p>
+          <p className='text-sm font-bold'>Nova Sessão: {user?.current_user}</p>
         </div>
-        <button type='button' onClick={handleSignOut} className='border-none hover:bg-transparent hover:text-red-400 text-sm text-center p-2 flex items-center gap-1'>
+        <button type='button' onClick={handleSignOut} className='flex items-center gap-1 p-2 text-sm text-center border-none hover:bg-transparent hover:text-red-400'>
           <p className='font-bold'>Sair</p>
           <LogOut className='w-5'/>
         </button>
       </div>
       { vehicle ? (
         <div className='flex flex-col items-center gap-2'>
-          <input maxLength={7} onChange={e => setPlate(e.target.value)} className='font-bold border border-solid p-2 border-text text-text select-none uppercase bg-transparent placeholder:text-highlight/50 w-20' type="text" name='plate' placeholder='Placa' />
+          <input maxLength={7} onChange={e => setPlate(e.target.value)} className='w-20 p-2 font-bold uppercase bg-transparent border border-solid select-none border-text text-text placeholder:text-highlight/50' type="text" name='plate' placeholder='Placa' />
           <div onClick={() => setOpenStatusInput(true)}>
             <Status type={vehicle.status}/>
           </div>
         </div>
       ) : (
         <div className="field">
-          <input maxLength={7} onChange={e => setPlate(e.target.value)} className='font-bold border border-solid p-2 border-text text-text select-none uppercase bg-transparent placeholder:text-highlight/50 w-20' type="text" name='plate' placeholder='Placa' />
+          <input maxLength={7} onChange={e => setPlate(e.target.value)} className='w-20 p-2 font-bold uppercase bg-transparent border border-solid select-none border-text text-text placeholder:text-highlight/50' type="text" name='plate' placeholder='Placa' />
         </div>
       )}
 
