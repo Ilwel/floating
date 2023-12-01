@@ -71,6 +71,8 @@ export default function HomePage() {
       const data = searchPlate()
       setVehicle(data)
       setLoading(false)
+    }else if(plate.length === 0){
+      setVehicle(null)
     }
   }, [plate])
 
@@ -111,17 +113,15 @@ export default function HomePage() {
         </button>
       </div>
       { vehicle ? (
-        <div className='flex items-center gap-2'>
-          <p className='font-bold border border-solid p-2 border-text select-none'>{vehicle.plate}</p>
+        <div className='flex flex-col items-center gap-2'>
+          <input maxLength={7} onChange={e => setPlate(e.target.value)} className='font-bold border border-solid p-2 border-text text-text select-none uppercase bg-transparent placeholder:text-highlight/50 w-20' type="text" name='plate' placeholder='Placa' />
           <div onClick={() => setOpenStatusInput(true)}>
             <Status type={vehicle.status}/>
           </div>
-          <button onClick={() => setVehicle(null)}>Editar Placa</button>
         </div>
       ) : (
         <div className="field">
-          <label htmlFor="plate" >Placa</label>
-          <input onChange={e => setPlate(e.target.value)} className='uppercase placeholder:normal-case' type="text" name='plate' placeholder='Insira a Placa'/>
+          <input maxLength={7} onChange={e => setPlate(e.target.value)} className='font-bold border border-solid p-2 border-text text-text select-none uppercase bg-transparent placeholder:text-highlight/50 w-20' type="text" name='plate' placeholder='Placa' />
         </div>
       )}
 
