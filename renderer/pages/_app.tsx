@@ -5,6 +5,7 @@ import Head from 'next/head'
 import logo from '../public/images/logo.svg'
 import Image from 'next/image'
 import { Providers } from '../redux/provider'
+import Info from '../components/head/info/Info'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -19,6 +20,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           <p>
             Floating
           </p>
+          <Info/>
         </div>      
         <main className='flex h-[84%] w-full items-start justify-center relative'>
           <Component {...pageProps} />
