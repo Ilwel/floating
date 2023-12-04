@@ -32,6 +32,8 @@ if (isProd) {
     resizable: false,
   })
 
+  mainWindow.setAlwaysOnTop(true, 'screen-saver')
+
   if (isProd) {
     await mainWindow.loadURL('app://./home')
   } else {
