@@ -135,8 +135,8 @@ export default function HomePage() {
           <h2 className='select-none'>Eventos</h2>
           <div className='flex gap-2 p-1 flex-wrap overflow-y-auto min-w-[100%] max-h-[100px] no-scrollbar'>
 
-            {mock2.map(item => (
-              <VehicleEvent type={item as VehicleEventType}/>
+            {mock2.map((item, index) => (
+              <VehicleEvent key={index} type={item as VehicleEventType}/>
             ))}
           </div>
         </div>

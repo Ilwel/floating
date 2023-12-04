@@ -198,7 +198,7 @@ export default function Autocomplete({ className, vehicle, setVehicle, setOpen }
             list
             .filter((v) => v.toLocaleLowerCase().indexOf(search.toLowerCase()) > -1)
             .map((v, i) => (
-              <div onClick={() => {
+              <div key={i} onClick={() => {
                 setOpen(false)
                 setSearchValue(v)
               }}>
