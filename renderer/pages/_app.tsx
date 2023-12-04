@@ -4,10 +4,12 @@ import '../styles/globals.css'
 import Head from 'next/head'
 import logo from '../public/images/logo.svg'
 import Image from 'next/image'
+import { Providers } from '../redux/provider'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
+    <Providers>
       <Head>
         <title>Floating</title>
       </Head>
@@ -23,6 +25,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         </main>  
 
       </div>
+    </Providers>
     </>
   )
 }

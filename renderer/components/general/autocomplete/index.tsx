@@ -1,7 +1,8 @@
 import { BadgeCheck, CloudOff, Construction, Droplet, FlagTriangleRight, Fuel, GitCommitHorizontal, Milestone, Moon, Package, PackageCheck, ShieldX, Truck, Utensils, Wrench } from "lucide-react"
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react"
 import { StatusType } from "../../main/status"
-import { Vehicle } from "../../../pages"
+import { useAppDispatch, useAppSelector } from "../../../redux/hooks"
+import * as vehicleActions from "../../../redux/features/vehicleSlice";
 
 const StartLabel = () => (
   <div className="w-full label check snap-center">
@@ -137,12 +138,12 @@ function Status({ type }: StatusInterface){
 
 interface AutocompleteInterface {
   className?: string
-  vehicle: Vehicle,
-  setVehicle: Dispatch<SetStateAction<Vehicle>>
   setOpen: Dispatch<SetStateAction<boolean>>
 }
 
-export default function Autocomplete({ className, vehicle, setVehicle, setOpen }: AutocompleteInterface){
+export default function Autocomplete({ className, setOpen }: AutocompleteInterface){
+  const dispatch = useAppDispatch()
+  const vehicle = useAppSelector(state => state.vehicleReducer)
 
   const [display, setDisplay] = useState(false)
   const [list, setList] = useState<Array<StatusType>>([
@@ -167,10 +168,10 @@ export default function Autocomplete({ className, vehicle, setVehicle, setOpen }
 
   const setSearchValue = (item: StatusType) =>{
     setSearch(item)
-    setVehicle({
+    dispatch(vehicleActions.set({
       ...vehicle,
       status: item
-    })
+    }))
     setDisplay(false)
   }
 
