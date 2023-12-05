@@ -4,7 +4,7 @@ import Loading from '../components/general/loading'
 import { BadgeCheck, LogOut } from 'lucide-react'
 import Status from '../components/main/status'
 import VehicleEvent, { VehicleEventType } from '../components/main/vehicle_event'
-import Autocomplete from '../components/general/autocomplete'
+import AutocompleteStatus from '../components/general/autocomplete-status'
 import { VehicleInterface } from '../redux/features/vehicleSlice'
 import * as vehicleActions from "../redux/features/vehicleSlice";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
@@ -125,7 +125,7 @@ export default function HomePage() {
       )}
 
       {openStatusInput && (
-        <Autocomplete setOpen={setOpenStatusInput} className='mt-3'/>
+        <AutocompleteStatus setOpen={setOpenStatusInput} className='mt-3'/>
       )}
 
 
