@@ -112,7 +112,7 @@ export default function HomePage() {
         </button>
       </div>
       { vehicle.plate ? (
-        <div className='flex flex-col items-center gap-2'>
+        <div className='flex items-center gap-2'>
           <input maxLength={7} onChange={e => setPlate(e.target.value)} className='w-20 p-2 font-bold uppercase bg-transparent border border-solid select-none border-text text-text placeholder:text-highlight/50' type="text" name='plate' placeholder='Placa' />
           <div onClick={() => setOpenStatusInput(true)}>
             <Status type={vehicle.status}/>
