@@ -11,7 +11,7 @@ if (isProd) {
   app.setPath('userData', `${app.getPath('userData')} (development)`)
 }
 
-;(async () => {
+(async () => {
   await app.whenReady()
 
   const mainWindow = createWindow('main', {
@@ -19,20 +19,31 @@ if (isProd) {
     height: 400,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
-      webSecurity: false
+      webSecurity: false,
     },
     frame: false,
     titleBarStyle: 'hidden',
-    titleBarOverlay: {
-      color: '#333333',
-      symbolColor: '#9D8062',
-      height: 50
-    },
     maximizable: false,
     resizable: false,
   })
 
   mainWindow.setAlwaysOnTop(true, 'screen-saver')
+
+  ipcMain.on('minimize', async () => {
+    mainWindow.resizable = true
+    mainWindow.setSize(270, 50)
+    mainWindow.resizable = false
+  })
+
+  ipcMain.on('maximize', async () => {
+    mainWindow.resizable = true
+    mainWindow.setSize(350, 400)
+    mainWindow.resizable = false
+  })
+
+  ipcMain.on('close', async () => {
+    mainWindow.close()
+  })  
 
   if (isProd) {
     await mainWindow.loadURL('app://./home')
