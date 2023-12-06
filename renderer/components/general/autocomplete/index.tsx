@@ -67,7 +67,7 @@ export default function Autocomplete({ className, setOpen }: AutocompleteInterfa
   return(
     <div ref={wrapperRef} className={"flex flex-col " + className}>
       <Loading open={loading}/>
-      <input maxLength={7} className="w-20 p-2 font-bold uppercase bg-transparent border border-solid select-none border-text text-text placeholder:text-highlight/50" value={search} onChange={handleChange} onClick={() => setDisplay(true)} type="text" placeholder='Placa' />
+      <input maxLength={7} className="w-20 p-2 uppercase bg-transparent border border-solid select-none border-text text-text placeholder:text-highlight/50" value={search} onChange={handleChange} onClick={() => setDisplay(true)} type="text" placeholder='Placa' />
       {display && (
         <div className="overflow-auto h-[90px] snap-y flex flex-col gap-1 mt-1 no-scrollbar">
           {
