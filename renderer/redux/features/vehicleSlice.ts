@@ -8,7 +8,7 @@ export interface VehicleInterface {
 
 const initialState = {
   plate: "",
-  status: "AGUARDANDO INICIO"
+  status: "PERNOITE"
 } as VehicleInterface
 
 export const vehicleSlice =  createSlice({

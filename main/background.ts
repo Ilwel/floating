@@ -25,6 +25,7 @@ if (isProd) {
     titleBarStyle: 'hidden',
     maximizable: false,
     minimizable: false,
+    fullscreenable: false,
     resizable: false,
   })
 

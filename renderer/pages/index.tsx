@@ -7,6 +7,8 @@ import VehicleEvent, { VehicleEventType } from '../components/main/vehicle_event
 import AutocompleteStatus from '../components/general/autocomplete-status'
 import { useAppSelector } from "../redux/hooks";
 import Autocomplete from '../components/general/autocomplete'
+import { useDispatch } from 'react-redux'
+import * as vehicleActions from "../redux/features/vehicleSlice"
 
 const mock = [
   'AG INICIO',
@@ -45,6 +47,21 @@ export interface UserInterface{
   grupo_usuario_id: number
 }
 
+const mapFuncKeys = {
+  'F1': 'AGUARDANDO INICIO',
+  'F2':'EM VIAGEM',
+  'F3':'CLIENTE',
+  'F4':'FILIAL',
+  'F5':'PERNOITE',
+  'F6':'PARADA EVENTUAL',
+  'F7':'PARADA POSTO FISCAL',
+  'F8':'PARADA HIGIENE',
+  'F9':'PARADA DISTRIBUIÇÃO',
+  'F10':'PARADA REFEIÇÃO',
+  'F11':'PARADA MANUNTENÇÃO',
+  'F12':'PARADA ABASTECIMENTO'
+}
+
 export default function HomePage() {
 
   const { push, reload } = useRouter()
@@ -52,6 +69,21 @@ export default function HomePage() {
   const [user, setUser] = useState<UserInterface>()
   const [openStatusInput, setOpenStatusInput] = useState(false)
   const vehicle = useAppSelector(state => state.vehicleReducer)
+  const dispatch = useDispatch()
+  const [key, setKey] = useState('')
+
+  useEffect(() => {
+    document.addEventListener('keydown', (e) => {
+      setKey(e.key)
+    })
+  }, [])
+
+  useEffect(() => {
+    dispatch(vehicleActions.set({
+      ...vehicle,
+      status: mapFuncKeys[key]
+    }))
+  }, [key])
 
 
   useEffect(() => {
