@@ -11,6 +11,7 @@ export default function SignIn(){
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     await ApiService.getUser(token)
+    localStorage.setItem('token', token)
     push('/')
   }
 

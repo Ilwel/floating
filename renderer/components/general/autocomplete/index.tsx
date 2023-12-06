@@ -1,4 +1,9 @@
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
+import Loading from "../loading";
+import { VehicleInterface } from "../../../redux/features/vehicleSlice";
+import { useDispatch } from "react-redux";
+import * as vehicleActions from "../../../redux/features/vehicleSlice";
+import { ApiService } from "../../../services/ApiService";
 
 interface AutocompleteInterface {
   className?: string
@@ -10,10 +15,20 @@ export default function Autocomplete({ className, setOpen }: AutocompleteInterfa
   const [list, setList] = useState<Array<string>>([])
   const [search, setSearch] = useState('')
   const wrapperRef = useRef(null);
+  const [loading, setLoading] = useState(false)
+  const dispatch = useDispatch()
 
-  const setSearchValue = (item: string) =>{
+  const setSearchValue = async (item: string) =>{
     setSearch(item)
     setDisplay(false)
+  }
+
+  const handleChange = async (e) => {
+    setSearch(e.target.value)
+    const token = localStorage.getItem('token')
+    const data = await ApiService.listVehicles(token, e.target.value)
+    const plates = data.map(item => item.placa)
+    setList(plates)
   }
 
   const handleClickOutside = event => {
@@ -22,6 +37,24 @@ export default function Autocomplete({ className, setOpen }: AutocompleteInterfa
       setDisplay(false);
     }
   };
+
+  const searchPlate = (plate: string) => {
+    return {
+      plate: plate,
+      status: 'EM VIAGEM'
+    } as VehicleInterface
+  } 
+
+  useEffect(() => {
+    if(search.length === 7){
+      setLoading(true)
+      const data = searchPlate(search)
+      dispatch(vehicleActions.set(data))
+      setLoading(false)
+    }else{
+      dispatch(vehicleActions.reset())
+    }
+  }, [search])
 
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside)
@@ -33,7 +66,8 @@ export default function Autocomplete({ className, setOpen }: AutocompleteInterfa
 
   return(
     <div ref={wrapperRef} className={"flex flex-col " + className}>
-      <input value={search} onChange={(e) => setSearch(e.target.value)} onClick={() => setDisplay(true)} type="text" placeholder='Status de viagem' />
+      <Loading open={loading}/>
+      <input maxLength={7} className="w-20 p-2 font-bold uppercase bg-transparent border border-solid select-none border-text text-text placeholder:text-highlight/50" value={search} onChange={handleChange} onClick={() => setDisplay(true)} type="text" placeholder='Placa' />
       {display && (
         <div className="overflow-auto h-[90px] snap-y flex flex-col gap-1 mt-1 no-scrollbar">
           {
@@ -44,7 +78,7 @@ export default function Autocomplete({ className, setOpen }: AutocompleteInterfa
                 setOpen(false)
                 setSearchValue(v)
               }}>
-                <p>{v}</p>
+                <p className="w-full p-1 text-center cursor-pointer bg-text text-highlight">{v}</p>
               </div>
             ))
           }

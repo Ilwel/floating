@@ -1,6 +1,6 @@
 export class ApiService{
 
-  static api: string = 'https://pr.staging.gcirisk.com.br'
+  static api: string = 'https://pr.staging.gcirisk.com.br/api'
 
   public static async getUser(token: string){
 
@@ -8,7 +8,7 @@ export class ApiService{
       headers: { authorization: (token as string) }
     }
 
-    const res = await fetch(`${this.api}/api/users/usuario_logado`, options)
+    const res = await fetch(`${this.api}/users/usuario_logado`, options)
 
     if(res.ok){
       const data = await res.json()

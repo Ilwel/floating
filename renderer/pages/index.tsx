@@ -8,6 +8,7 @@ import AutocompleteStatus from '../components/general/autocomplete-status'
 import { VehicleInterface } from '../redux/features/vehicleSlice'
 import * as vehicleActions from "../redux/features/vehicleSlice";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import Autocomplete from '../components/general/autocomplete'
 
 const mock = [
   'AG INICIO',
@@ -51,29 +52,9 @@ export default function HomePage() {
   const { push, reload } = useRouter()
   const [loading, setLoading] = useState(false)
   const [user, setUser] = useState<UserInterface>()
-  const [plate, setPlate] = useState('')
   const [openStatusInput, setOpenStatusInput] = useState(false)
-  const dispatch = useAppDispatch()
   const vehicle = useAppSelector(state => state.vehicleReducer)
 
-
-  const searchPlate = () => {
-    return {
-      plate: 'AAA1234',
-      status: 'EM VIAGEM'
-    } as VehicleInterface
-  } 
-
-  useEffect(() => {
-    if(plate.length === 7){
-      setLoading(true)
-      const data = searchPlate()
-      dispatch(vehicleActions.set(data))
-      setLoading(false)
-    }else if(plate.length === 0){
-      dispatch(vehicleActions.reset())
-    }
-  }, [plate])
 
   useEffect(() => {
 
@@ -113,14 +94,14 @@ export default function HomePage() {
       </div>
       { vehicle.plate ? (
         <div className='flex items-center gap-2'>
-          <input maxLength={7} onChange={e => setPlate(e.target.value)} className='w-20 p-2 font-bold uppercase bg-transparent border border-solid select-none border-text text-text placeholder:text-highlight/50' type="text" name='plate' placeholder='Placa' />
+          <Autocomplete setOpen={setOpenStatusInput}/>
           <div onClick={() => setOpenStatusInput(true)}>
             <Status type={vehicle.status}/>
           </div>
         </div>
       ) : (
         <div className="field">
-          <input maxLength={7} onChange={e => setPlate(e.target.value)} className='w-20 p-2 font-bold uppercase bg-transparent border border-solid select-none border-text text-text placeholder:text-highlight/50' type="text" name='plate' placeholder='Placa' />
+          <Autocomplete setOpen={setOpenStatusInput}/>
         </div>
       )}
 
