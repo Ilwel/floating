@@ -24,6 +24,7 @@ if (isProd) {
     frame: false,
     titleBarStyle: 'hidden',
     maximizable: false,
+    minimizable: false,
     resizable: false,
   })
 
