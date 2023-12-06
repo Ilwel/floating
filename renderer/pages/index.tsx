@@ -5,9 +5,7 @@ import { BadgeCheck, LogOut } from 'lucide-react'
 import Status from '../components/main/status'
 import VehicleEvent, { VehicleEventType } from '../components/main/vehicle_event'
 import AutocompleteStatus from '../components/general/autocomplete-status'
-import { VehicleInterface } from '../redux/features/vehicleSlice'
-import * as vehicleActions from "../redux/features/vehicleSlice";
-import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { useAppSelector } from "../redux/hooks";
 import Autocomplete from '../components/general/autocomplete'
 
 const mock = [
