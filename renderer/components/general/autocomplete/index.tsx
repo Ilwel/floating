@@ -50,9 +50,11 @@ export default function Autocomplete({ className, setOpen }: AutocompleteInterfa
       setLoading(true)
       const data = searchPlate(search)
       dispatch(vehicleActions.set(data))
+      setDisplay(false)
       setLoading(false)
     }else{
       dispatch(vehicleActions.reset())
+      setDisplay(true)
     }
   }, [search])
 
