@@ -27,7 +27,9 @@ export default function Info(){
       <div className={"flex flex-col items-start " + mapColors[vehicle.status]}>
         <div className="flex">
           <p className="text-[12px] font-bold">{vehicle.plate.toUpperCase()}</p>
-          <MiniStatus type={vehicle.status}/>
+          <div className="mt-[2px]">
+            <MiniStatus type={vehicle.status}/>
+          </div>
         </div>
         <p className="text-[12px]">({vehicle.status})</p>
       </div>

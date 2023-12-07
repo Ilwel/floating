@@ -48,7 +48,7 @@ export interface UserInterface{
   grupo_usuario_id: number
 }
 
-const mapFuncKeys = {
+export const mapFuncKeys = {
   'F1': 'AGUARDANDO INICIO',
   'F2':'EM VIAGEM',
   'F3':'CLIENTE',
