@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import vehicleReducer from './features/vehicleSlice'
+import screenReducer from './features/screenSlice'
 
 export const store = configureStore({
   reducer: {
-    vehicleReducer
+    vehicleReducer,
+    screenReducer
   },
   devTools: process.env.NODE_ENV !== "production",
 });

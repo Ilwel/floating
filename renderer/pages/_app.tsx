@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import type { AppProps } from 'next/app'
 import '../styles/globals.css'
 import Head from 'next/head'
@@ -7,10 +7,16 @@ import Image from 'next/image'
 import { Providers } from '../redux/provider'
 import Info from '../components/head/info/Info'
 import { ChevronDownCircle, MinusCircle, XCircle } from 'lucide-react'
+import { useAppDispatch, useAppSelector } from '../redux/hooks'
+import * as screenActions from '../redux/features/screenSlice'
 
-function MyApp({ Component, pageProps }: AppProps) {
+type ContentProps = {
+  children: React.ReactNode
+}
 
-  const [minimal, setMinimal] = useState(false)
+function Content ({children}: ContentProps){
+  const minimal = useAppSelector(state => state.screenReducer.minimal)
+  const dispatch = useAppDispatch()
 
   const handleMinimizeMaximize = () => {
     
@@ -20,7 +26,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       window.ipc.send('minimize', 'minimize')
     }
 
-    setMinimal(!minimal)
+    dispatch(screenActions.set({minimal: !minimal}))
 
   }
 
@@ -29,10 +35,8 @@ function MyApp({ Component, pageProps }: AppProps) {
     window.ipc.send('close', 'close')
 
   }
-
   return (
     <>
-    <Providers>
       <Head>
         <title>Floating</title>
       </Head>
@@ -60,10 +64,22 @@ function MyApp({ Component, pageProps }: AppProps) {
         </div>   
         
         <main className='flex h-[84%] w-full items-start justify-center relative'>
-          <Component {...pageProps} />
+          {children}
         </main>  
 
       </div>
+    </>
+  )
+}
+
+function MyApp({ Component, pageProps }: AppProps) {
+
+  return (
+    <>
+    <Providers>
+      <Content>
+          <Component {...pageProps} />
+      </Content>
     </Providers>
     </>
   )

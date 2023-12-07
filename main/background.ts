@@ -33,7 +33,7 @@ if (isProd) {
 
   ipcMain.on('minimize', async () => {
     mainWindow.resizable = true
-    mainWindow.setSize(200, 50)
+    mainWindow.setSize(300, 50)
     mainWindow.resizable = false
   })
 

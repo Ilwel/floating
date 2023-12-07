@@ -9,6 +9,7 @@ import { useAppSelector } from "../redux/hooks";
 import Autocomplete from '../components/general/autocomplete'
 import { useDispatch } from 'react-redux'
 import * as vehicleActions from "../redux/features/vehicleSlice"
+import * as screenActions from "../redux/features/screenSlice"
 
 const mock = [
   'AG INICIO',
@@ -71,18 +72,32 @@ export default function HomePage() {
   const vehicle = useAppSelector(state => state.vehicleReducer)
   const dispatch = useDispatch()
   const [key, setKey] = useState('')
+  const minimal = useAppSelector(state => state.screenReducer.minimal)
 
   useEffect(() => {
-    document.addEventListener('keydown', (e) => {
-      setKey(e.key)
+    document.addEventListener('keydown', async (e) => {
+      await setKey(e.key)
+      setKey('neutral')
     })
   }, [])
-
+  
   useEffect(() => {
-    dispatch(vehicleActions.set({
-      ...vehicle,
-      status: mapFuncKeys[key]
-    }))
+    
+    if(key === 'm' && !minimal){
+      window.ipc.send('minimize', 'minimize')
+      dispatch(screenActions.set({minimal: !minimal}))
+      return
+    }else if(key === 'm'){
+      window.ipc.send('maximize', 'maximize')
+      dispatch(screenActions.set({minimal: !minimal}))
+      return
+    }else if(key.includes('F') && key !== 'F'){
+      dispatch(vehicleActions.set({
+        ...vehicle,
+        status: mapFuncKeys[key]
+      }))
+    }
+
   }, [key])
 
 
